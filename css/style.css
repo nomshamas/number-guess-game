@@ -1,0 +1,125 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: black;
+	color: white;
+	font-family: roboto;
+}
+
+.container {
+	max-width: 1200px;
+	margin: auto;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.x-center {
+	justify-content: center;
+}
+
+.x-between {
+	justify-content: space-between;
+}
+
+.y-center {
+	align-items: center;
+}
+
+.btn {
+	padding: 10px 20px;
+	font-size: 18px;
+	cursor: pointer;
+	border: transparent;
+	outline: none;
+}
+
+.label::before {
+	content: '<';
+}
+
+.label::after {
+	content: '>';
+}
+
+.heading {
+	margin-top: 10px;
+	font-size: 60px;
+	font-weight: 600;
+	text-transform: capitalize;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.l-line, .r-line {
+	height: 6px;
+	width: calc(48% - 50px);
+	background: white;
+}
+
+.l-side, .r-side {
+	flex: 0 0 40%;
+	text-align: center;
+}
+
+.q-box {
+	height: 100px;
+	width: 100px;
+	text-align: center;
+	font-size: 86px;
+	background: white;
+	color: black;
+	display: inline-grid;
+	place-items: center;
+}
+
+.r-side {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-field {
+	outline: none;
+	height: 100px;
+	margin: auto;
+	padding: 6px;
+	outline: none;
+	color: white;
+	font-size: 24px;
+	border: 4px solid white;
+	background: transparent;
+	display: block;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.guessing, .score, .h-score {
+	color: red;
+	margin-bottom: 2rem;
+	white-space: nowrap;
+}
+
+.h-score {
+	margin-bottom: 0;
+}
+
+@media only screen and (max-width: 578px) {
+	.heading {
+		margin-top: 0px;
+		font-size: 32px;
+	}
+	.r-side {
+		order: -1;
+	}
+	.input-field {
+		height: 60px;
+	}
+}
