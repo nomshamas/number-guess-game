@@ -15,7 +15,7 @@ let currentScore = 20;
 let highScore = 0;
 
 // Function to update the message displayed
-function updateMessage(message, color = "black") {
+function updateMessage(message, color = "white") {
   guessingValue.textContent = message;
   guessingValue.style.color = color;
 }
@@ -73,5 +73,5 @@ inputValue.addEventListener("keypress", function (event) {
 });
 
 // Initial setup
-randomValue.textContent = number;
+// randomValue.textContent = number;
 inputValue.focus();
