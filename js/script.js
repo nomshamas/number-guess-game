@@ -1,60 +1,68 @@
-// "use strict";
+"use strict";
 
-var randomValue = document.getElementById("q-box");
-var guessingValue = document.getElementById("guessing");
-var scoreValue = document.getElementById("score");
-var hightScoreValue = document.getElementById("h-score");
-var inputValue = document.getElementById("input-field");
-var checkBtn = document.getElementById("check-btn");
-var resetBtn = document.getElementById("reset-btn");
+// DOM element variables
+const randomValue = document.getElementById("q-box");
+const guessingValue = document.getElementById("guessing");
+const scoreValue = document.getElementById("score");
+const highScoreValue = document.getElementById("h-score");
+const inputValue = document.getElementById("input-field");
+const checkBtn = document.getElementById("check-btn");
+const resetBtn = document.getElementById("reset-btn");
 
-var number = 0;
-number = Math.floor(Math.random() * 20) + 1;
+// Initialize the game
+let number = Math.floor(Math.random() * 20) + 1;
+let currentScore = 20;
+let highScore = 0;
 
-var currentScore = 20;
+// Function to update the message displayed
+function updateMessage(message, color = "black") {
+  guessingValue.textContent = message;
+  guessingValue.style.color = color;
+}
 
-randomValue.textContent = number;
-inputValue.focus();
+// Function to handle guess
+function handleGuess() {
+  const guess = parseInt(inputValue.value);
 
-checkBtn.addEventListener("click", function () {
-  if (inputValue.value >= 1 && inputValue.value <= 20) {
-    if (inputValue.value > number && currentScore >= 1) {
-      guessingValue.textContent = "Too, High value!";
-      currentScore--;
-      scoreValue.textContent = currentScore;
-    } else if (inputValue.value < number && currentScore > 1) {
-      guessingValue.textContent = "Too, Low value!";
-      currentScore--;
-      scoreValue.textContent = currentScore;
-    } else if(inputValue.value == number && currentScore > 1) {
-      guessingValue.textContent = 'You Won!'
-      guessingValue.style.color = 'green'
-      currentScore--;
-      scoreValue.textContent = currentScore;
-      inputValue.setAttribute('disabled', 'disabled')
-      checkBtn.setAttribute('disabled', 'disabled')
+  if (isNaN(guess) || guess < 1 || guess > 20) {
+    updateMessage("Invalid Value!", "red");
+  } else if (guess === number) {
+    updateMessage("You Won!", "green");
+    inputValue.setAttribute("disabled", "disabled");
+    checkBtn.setAttribute("disabled", "disabled");
+    if (currentScore > highScore) {
+      highScore = currentScore;
+      highScoreValue.textContent = highScore;
     }
-    else{
-      guessingValue.textContent = 'You Loose!'
-      currentScore--;
-      scoreValue.textContent = currentScore;
-      inputValue.setAttribute('disabled', 'disabled')
-      checkBtn.setAttribute('disabled', 'disabled')
+  } else {
+    const message = guess > number ? "Too High!" : "Too Low!";
+    updateMessage(message, "red");
+    currentScore--;
+    scoreValue.textContent = currentScore;
+    if (currentScore <= 0) {
+      updateMessage("You Lost!", "red");
+      inputValue.setAttribute("disabled", "disabled");
+      checkBtn.setAttribute("disabled", "disabled");
     }
   }
-  else {
-    guessingValue.textContent = "Invalid Value!";
-  }
+
   inputValue.value = "";
-});
+  inputValue.focus();
+}
+
+// Event listeners
+checkBtn.addEventListener("click", handleGuess);
 
 resetBtn.addEventListener("click", function () {
+  number = Math.floor(Math.random() * 20) + 1;
+  currentScore = 20;
+  scoreValue.textContent = currentScore;
   randomValue.textContent = "?";
+  inputValue.removeAttribute("disabled");
+  checkBtn.removeAttribute("disabled");
+  updateMessage("Start Guessing...");
+  inputValue.value = "";
   inputValue.focus();
-  guessingValue.textContent = "Start Guessing...";
-  scoreValue.textContent = "20";
-  inputValue.removeAttribute('disabled')
-  checkBtn.removeAttribute('disabled')
 });
 
 inputValue.addEventListener("keypress", function (event) {
@@ -63,3 +71,7 @@ inputValue.addEventListener("keypress", function (event) {
     checkBtn.click();
   }
 });
+
+// Initial setup
+randomValue.textContent = number;
+inputValue.focus();
