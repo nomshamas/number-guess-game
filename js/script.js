@@ -15,7 +15,7 @@ let currentScore = 20;
 let highScore = 0;
 
 // Function to update the message displayed
-function updateMessage(message, color = "white") {
+function updateMessage(message, color = "red") {
   guessingValue.textContent = message;
   guessingValue.style.color = color;
 }
@@ -28,6 +28,7 @@ function handleGuess() {
     updateMessage("Invalid Value!", "red");
   } else if (guess === number) {
     updateMessage("You Won!", "green");
+    randomValue.textContent = number;
     inputValue.setAttribute("disabled", "disabled");
     checkBtn.setAttribute("disabled", "disabled");
     if (currentScore > highScore) {
@@ -35,7 +36,7 @@ function handleGuess() {
       highScoreValue.textContent = highScore;
     }
   } else {
-    const message = guess > number ? "Too High!" : "Too Low!";
+    const message = guess > number ? "Too high!" : "Too low!";
     updateMessage(message, "red");
     currentScore--;
     scoreValue.textContent = currentScore;
@@ -55,7 +56,7 @@ checkBtn.addEventListener("click", handleGuess);
 
 resetBtn.addEventListener("click", function () {
   number = Math.floor(Math.random() * 20) + 1;
-  currentScore = 20;
+  currentScore = 0;
   scoreValue.textContent = currentScore;
   randomValue.textContent = "?";
   inputValue.removeAttribute("disabled");
@@ -73,5 +74,4 @@ inputValue.addEventListener("keypress", function (event) {
 });
 
 // Initial setup
-// randomValue.textContent = number;
 inputValue.focus();

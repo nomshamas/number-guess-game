@@ -1,6 +1,6 @@
 # Number Guessing Game
 
-![Game Screenshot](screenshot.png)
+![Game Screenshot](./assets/screenshot.png)
 
 ## Table of Contents
 - [Project Description](#project-description)
@@ -27,10 +27,10 @@ The Number Guessing Game is a simple and entertaining project that challenges pl
 9. **Play Again:** Players can start a new game after completing one.
 
 ## Technologies and Tools
-- Programming Language: [Choose based on your preference]
-- Integrated Development Environment (IDE): [IDE name]
-- Version Control (Optional): Git
-- User Interface (Optional): HTML/CSS for web-based games, GUI libraries for desktop applications.
+- Programming Language: HTML, CSS & JS
+- Integrated Development Environment (IDE): Visual Studio Code
+- Version Control: Git
+- User Interface (Optional): HTML/CSS for web-based games
 
 ## Implementation Steps
 1. Define the game rules and objectives.
@@ -52,10 +52,49 @@ The Number Guessing Game is a simple and entertaining project that challenges pl
 - Localization for different languages.
 
 ## Getting Started
-Include instructions here on how to set up and run the game. Provide any necessary installation steps or dependencies.
+### Clone Repository
+```bash
+git clone https://github.com/nomshamas/number-guess-game.git
+cd number-guess-game
+```
 
-## Contributing
-If you'd like to contribute to the project, please follow our [contributing guidelines](CONTRIBUTING.md).
+## 🤝 Contributing
+We welcome contributions to this project!
+Please follow these steps:
 
-## License
-This project is licensed under the [License Name] License - see the [LICENSE](LICENSE) file for details.
+### 1. Fork & Clone
+```bash
+1. git clone https://github.com/nomshamas/number-guess-game.git
+2. cd number-guess-game
+```
+### 2. Create a New Branch
+```bash
+git checkout -b feature/your-feature-name
+```
+### 3. Make Changes & Commit
+```bash
+git add .
+git commit -m "Add: your feature description"
+```
+
+### 4. Push & Create a Pull Request
+```bash
+git push origin feature/your-feature-name
+```
+
+### Then open a Pull Request on GitHub.
+
+
+## 📌 Contribution Rules
+
+- Write clear commit messages
+- Follow the existing code style
+- Update docs/tests if needed
+- Be respectful in discussions
+
+## 📜 License
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute this software.
+
+## 📧 Contact
+Created by nomshamas — feel free to reach out!
